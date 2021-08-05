@@ -8,17 +8,20 @@
 
 let numeroKilometri = parseInt( prompt("Quanti kilometri desidera percorrere?") );
 let etaPasseggero = parseInt( prompt("Quanti anni ha?") );
-const costoBiglietto = parseInt( numeroKilometri * 0.21);
+const costoBiglietto = parseFloat( numeroKilometri * 0.21).toFixed(2);
 
-const scontoPerMinorenne = parseInt( costoBiglietto - ( (costoBiglietto / 100) * 20) );
-const scontoPerOver = parseInt( costoBiglietto - ( (costoBiglietto / 100) * 40) );
+const costoPerMinorenne = parseFloat( costoBiglietto - ( (costoBiglietto / 100) * 20) ).toFixed(2);
+const costoPerOver = parseFloat( costoBiglietto - ( (costoBiglietto / 100) * 40) ).toFixed(2);
+
+document.getElementById("kilometri").innerHTML = numeroKilometri + "km";
+document.getElementById("eta").innerHTML = etaPasseggero + " anni";
 
 if (etaPasseggero < 18){
-    document.getElementById("costo-biglietto").innerHTML = scontoPerMinorenne;
+    document.getElementById("costo-biglietto").innerHTML = costoPerMinorenne + "\u20AC";
  } else if (etaPasseggero > 65){
-    document.getElementById("costo-biglietto").innerHTML = scontoPerOver;
+    document.getElementById("costo-biglietto").innerHTML = costoPerOver + "\u20AC";
  } else if (Number.isNaN(numeroKilometri) || Number.isNaN(etaPasseggero)){
-    document.getElementById("costo-biglietto").innerHTML = ("Per favore scriva un numero valido");
+    document.getElementById("costo-biglietto").innerHTML = ("Per favore scriva un numero valido.");
 } else {
     document.getElementById("costo-biglietto").innerHTML = costoBiglietto;
 }
